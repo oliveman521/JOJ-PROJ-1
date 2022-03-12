@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Sprite Standing;
+    public Sprite WalkingAway;
     public float speed = 5;
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -29,6 +33,15 @@ public class PlayerController : MonoBehaviour
         else if (rb.velocity.x < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, transform.rotation.z);
+        }
+
+        if(rb.velocity.y>0&&rb.velocity.x==0)
+        {
+            sr.sprite = WalkingAway;
+        }
+        else
+        {
+            sr.sprite = Standing;
         }
     }
 }
