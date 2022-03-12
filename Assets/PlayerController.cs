@@ -9,11 +9,21 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private int xannyCounter = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.name=="Xanny")
+        {
+            xannyCounter++;
+            Destroy(other.gameObject);
+        }
     }
 
     void Update()
@@ -43,5 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             sr.sprite = Standing;
         }
+
+        
     }
 }
