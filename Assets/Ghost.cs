@@ -5,8 +5,9 @@ using Pathfinding;
 public class Ghost : MonoBehaviour
 {
     GameObject player;
-    
-    
+
+    Seeker seeker;
+    Rigidbody2D rb;
 
     void Start()
     {
